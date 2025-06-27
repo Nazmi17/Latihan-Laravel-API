@@ -10,6 +10,7 @@ class TodoController extends Controller
 {
     public function index(){
         $todos = Todo::orderBy('id', 'asc')->get();
+        
 
         return TodoResource::collection($todos);
     }
@@ -24,6 +25,8 @@ class TodoController extends Controller
         $todo->refresh();
 
         return response()->json([
+            'success' => true,
+            'message' => 'Todo created successfully',
             'data' => $todo,
         ]);
     }
@@ -46,6 +49,8 @@ class TodoController extends Controller
         $todo->save();
 
         return response()->json([
+            'success' => true,
+            'message' => 'Todo updated successfully',
             'data' => $todo
         ]);
     }
@@ -55,6 +60,8 @@ class TodoController extends Controller
         $todo->delete();
 
         return response()->json([
+            'success' => true,
+            'message' => 'Todo deleted successfully',
             'data' => $todo
         ]);
     }
